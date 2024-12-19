@@ -1,37 +1,43 @@
-# Typing Speed Game
+# Weather Forecast Application
 
-This is a **Typing Speed** game built using Python, designed to test and improve your typing skills. The game challenges users to type a given sentence as quickly and accurately as possible. It tracks your typing speed in **Words Per Minute (WPM)** and displays your accuracy based on the input.
+This is a **Weather Forecast** application built using **Python** and the **Tkinter** library for creating the graphical user interface (GUI). The app uses the **OpenWeatherMap API** to fetch real-time weather data and display it for a user-specified city.
 
-- **Typing Speed Measurement**: The game calculates your typing speed in words per minute (WPM).
-- **Accuracy Tracking**: It measures how accurate your typing is by comparing your input with the provided sentence.
-- **Time Tracking**: The game starts a timer when the user begins typing and stops when the sentence is typed completely.
-- **Real-Time Feedback**: You get immediate feedback on your speed and accuracy after completing the test.
+## Features
+- Enter the name of a city to get the current weather details.
+- Displays:
+  - Temperature (in Kelvin)
+  - Weather description (e.g., sunny, cloudy)
+  - Humidity
+  - Minimum and maximum temperatures
+- Error handling for invalid city names or failed API requests.
+- User-friendly interface built with **Tkinter**.
 
-## Logic Used
+## Libraries Used
+- **Tkinter**: For creating the GUI of the application.
+- **Requests**: To make HTTP requests to the OpenWeatherMap API and fetch weather data.
+- **OpenWeatherMap API**: Provides real-time weather data.
 
-### 1. **Sentence Selection**
-The game provides a random sentence from a predefined list (or a file) of sentences. The sentences should be of varying difficulty to give users an appropriate challenge.
+## How the Application Works
 
-### 2. **Timer**
-- A timer starts as soon as the user begins typing. The time taken to type the entire sentence is recorded.
-- The time is then used to calculate the **Words Per Minute (WPM)**.
-- **WPM Formula**:
-  \[
-  WPM = \frac{{\text{{Number of words typed}}}}{{\text{{Time taken in minutes}}}}
-  \]
-  where 1 word is considered to be 5 characters long.
+### 1. **User Input**
+- The user enters the name of a city in the provided text entry field.
 
-### 3. **Typing Accuracy**
-- The game compares the user’s typed sentence with the original sentence to determine the accuracy.
-- The number of correct characters typed is counted and compared to the total number of characters.
-- The accuracy is calculated as:
-  \[
-  \text{{Accuracy}} = \left(\frac{{\text{{Correct characters typed}}}}{{\text{{Total characters}}}} \right) \times 100
-  \]
+### 2. **Weather Data Fetching**
+- Once the user clicks the **Submit** button, the `weather()` function is called.
+- The city name entered by the user is used to make an API request to the OpenWeatherMap API.
+- The API returns weather data, including:
+  - Temperature
+  - Weather description
+  - Humidity
+  - Minimum and maximum temperatures
 
-### 4. **End Result**
-- Once the user finishes typing, the program displays:
-  - **Time Taken** to type the sentence.
-  - **Words Per Minute (WPM)**.
-  - **Typing Accuracy** as a percentage.
+### 3. **Displaying Data**
+- If the API call is successful (status code 200), the data is displayed in the `Text` widget.
+- If the city name is invalid or the API request fails, an error message is shown.
 
+### 4. **Error Handling**
+- The application checks if the user has entered a city name. If the input is empty, a warning message is displayed.
+- If the API request fails, the application displays an error message asking the user to check the city name.
+
+### 5. **Temperature Units**
+- The temperature is displayed in **Kelvin**. You can modify the API call to display the temperature in **Celsius** or **Fahrenheit** as per your preference.
